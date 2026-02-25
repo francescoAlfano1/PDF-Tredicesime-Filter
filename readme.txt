@@ -1,27 +1,99 @@
-# PDF Payslip Filter – Filtro Tredicesime
+📘 PDF Payslip Filter (Filtro Tredicesime)
+Utility desktop per filtrare cedolini PDF all’interno di archivi ZIP
+📌 Descrizione del progetto
+PDF Payslip Filter è un’applicazione desktop standalone (Windows) sviluppata in Python 3 che permette di filtrare automaticamente file PDF contenuti in un archivio ZIP, identificando quelli relativi alla tredicesima mensilità tramite un sistema di parole chiave configurabile dall’utente.
 
-Utility desktop Python che automatizza il filtraggio di **cedolini paga in formato PDF** contenuti in un archivio ZIP.
+Il programma:
 
-## 🛠️ Tecnologie
-- Python 3
-- `PyPDF2` (lettura PDF)
-- `tkinter` (interfaccia grafica)
-- `zipfile` (gestione archivi)
+analizza ogni PDF senza estrarlo su disco
+cerca parole chiave definite dall’utente
+crea un nuovo ZIP contenente solo i PDF identificati
+genera un file di log dettagliato con l’esito dell’analisi
 
-## 📋 Descrizione
-Il programma identifica i documenti relativi alla tredicesima mensilità tramite un sistema di parole chiave configurabile dall'utente, produce un nuovo archivio ZIP contenente solo i PDF identificati, e genera un file di log con l'esito dell'analisi di ciascun documento.
+È pensato per utenti non tecnici, in particolare per contesti HR / amministrazione del personale che gestiscono grandi volumi di cedolini.
 
-## ✅ Funzionalità principali
-- Interfaccia grafica guidata (selezione file tramite finestre di dialogo)
-- Lettura e parsing del testo da PDF multipli senza estrazione su disco
-- Filtraggio basato su parole chiave personalizzabili via file esterno (`parole_chiave.txt`)
-- Generazione automatica di un log con timestamp per la tracciabilità
-- Gestione degli errori per PDF corrotti o illeggibili
+🧰 Tecnologie utilizzate
+Python 3
 
-## 💡 Punti di forza
-- Orientato all'utente finale non tecnico (nessuna riga di comando)
-- Configurabile senza modificare il codice sorgente
-- Gestione degli errori per PDF corrotti o illeggibili
+Librerie:
 
-## 🏢 Contesto d'uso
-Ambito HR / amministrazione del personale — gestione massiva di archivi documentali.
+PyPDF2 – estrazione testo dai PDF
+
+tkinter – interfaccia grafica (GUI)
+
+zipfile – gestione archivi ZIP
+
+io, os, datetime – utilità standard
+
+🎯 Funzionalità principali
+Interfaccia grafica semplice e guidata (nessuna riga di comando)
+
+Selezione dei file tramite finestre di dialogo
+
+Parsing PDF in memoria, senza estrazione su disco
+
+Filtraggio basato su parole chiave personalizzabili
+
+Generazione automatica di un file di log con timestamp
+
+Gestione errori PDF corrotti o non leggibili
+
+Nessuna installazione di Python richiesta (versione .exe disponibile)
+
+📂 Struttura dei file
+Nella stessa cartella dell’eseguibile devono essere presenti:
+
+Codice
+ScriptFiltraTredicesima.exe
+parole_chiave.txt
+Il file parole_chiave.txt contiene una parola chiave per riga, ad esempio:
+
+Codice
+tredicesima
+mens.supplementare
+🚀 Come utilizzare l’applicazione
+Avvia ScriptFiltraTredicesima.exe.
+
+Compare un messaggio introduttivo con le istruzioni.
+
+Seleziona:
+
+lo ZIP di origine contenente i PDF
+
+il nome e la posizione dello ZIP filtrato da generare
+
+Il programma analizza ogni PDF e crea:
+
+un nuovo ZIP con i soli PDF che contengono almeno una parola chiave
+
+un file di log nella stessa cartella dello ZIP di origine
+
+📄 Output generati
+🔹 Archivio ZIP filtrato
+Contiene solo i PDF identificati come “tredicesima”.
+
+🔹 File di log
+Nome esempio:
+
+Codice
+log_filtraggio_2025-12-17_12-21-30.txt
+Per ogni PDF indica:
+
+“è una tredicesima (trovato: …)” → se contiene parole chiave
+
+“cedolino normale” → se non contiene parole chiave
+
+“errore nella lettura” → se il PDF non è stato processato correttamente
+
+📝 Note importanti
+La ricerca è case-insensitive.
+
+Le parole chiave possono essere modificate liberamente senza ricompilare l’applicazione.
+
+Ogni esecuzione genera un nuovo log, evitando sovrascritture.
+
+Il programma non modifica i PDF originali.
+
+👤 Autore
+Francesco Alfano  
+Data progetto: 17/12/2025
